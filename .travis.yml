@@ -1,0 +1,12 @@
+language: c
+cache: apt
+addons:
+  apt:
+    packages:
+      - lua
+      - apache2
+script:
+  - luac -p *.lua
+notifications:
+  email:
+    on_success: never
