@@ -1,4 +1,4 @@
-re 'apache2'
+require 'apache2'
 
 -- CORSを許可したいOriginホスト名を列挙します, サブドメインも許可されます, "*"が指定された場合全てのOriginを許可します
 AllowOrigins = { "example.com", "example.jp" }
@@ -35,6 +35,9 @@ function add_cors(r)
       end
       if AllowCredentials then
         r.headers_out["Access-Control-Allow-Credentials"] = "true"
+      end
+      if ExposeHeaders and 0 < table.getn(ExposeHeaders) then
+        r.headers_out["Access-Control-Expose-Headers"] = table.concat(ExposeHeaders, ", ")
       end
       if AccessControlMaxAge and 0 < AccessControlMaxAge then
         r.headers_out["Access-Control-Max-Age"] = AccessControlMaxAge
