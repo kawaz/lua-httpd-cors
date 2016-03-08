@@ -16,6 +16,9 @@ ExposeHeaders = {}
 AccessControlMaxAge = 3600
 
 function add_cors(r)
+  if not r.is_initial_req then
+    return nil
+  end
   local allowOrigin = getAllowOrigin(r)
   if allowOrigin then
     r.headers_out["Access-Control-Allow-Origin"] = allowOrigin
