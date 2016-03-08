@@ -76,7 +76,7 @@ function getAllowOrigin(r)
         return origin
       end
       if AllowPrivateOrigins then
-        if r:regex(origin_host, "^(localhost|.*\\.local|((10|127)\\.\\d+|192\\.168|172\\.(1[678]|2\\d|3[01]))\\.\\d+\\.\\d+)$") then
+        if r:regex(origin_host, "^(localhost|.*\\.local|((10|127)\\.\\d+|192\\.168|172\\.(1[6-9]|2\\d|3[01]))\\.\\d+\\.\\d+)$") then
           return origin
         end
       end
